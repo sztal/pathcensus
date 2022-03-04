@@ -1,0 +1,24 @@
+[build-system]
+requires = [
+    "setuptools>=52.0",
+    "wheel>=0.37"
+]
+build-backend = "setuptools.build_meta"
+
+
+# PyTest configuration
+[tool.pytest.ini_options]
+testpaths = [
+    "tests",
+    "pathcensus"
+]
+addopts = [
+    "-s",
+    "--pdbcls=IPython.terminal.debugger:Pdb",
+    "--doctest-glob=*.py",
+    "--doctest-modules"
+]
+doctest_optionflags = [ "NORMALIZE_WHITESPACE" ]
+python_files = [ "test_*.py" ]
+python_classes = [ "Test*" ]
+python_functions = [ "test_*" ]

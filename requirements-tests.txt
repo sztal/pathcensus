@@ -1,0 +1,9 @@
+ipython>=7.26
+ipdb>=0.13
+pylint>=2.9
+pytest>=6.2
+pytest-runner>=5.3
+pytest-pylint>=0.18
+coverage>=5.5
+python-igraph>=0.9
+networkx>=2.6

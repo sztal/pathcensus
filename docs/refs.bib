@@ -1,0 +1,84 @@
+
+@inproceedings{ahmedEfficientGraphletCounting2015,
+  title = {Efficient {{Graphlet Counting}} for {{Large Networks}}},
+  booktitle = {2015 {{IEEE International Conference}} on {{Data Mining}}},
+  author = {Ahmed, Nesreen K. and Neville, Jennifer and Rossi, Ryan A. and Duffield, Nick},
+  year = {2015},
+  pages = {1--10},
+  publisher = {{IEEE}},
+  address = {{Atlantic City, NJ, USA}},
+  doi = {10.1109/ICDM.2015.141},
+  abstract = {From social science to biology, numerous applications often rely on graphlets for intuitive and meaningful characterization of networks at both the global macro-level as well as the local micro-level. While graphlets have witnessed a tremendous success and impact in a variety of domains, there has yet to be a fast and efficient approach for computing the frequencies of these subgraph patterns. However, existing methods are not scalable to large networks with millions of nodes and edges, which impedes the application of graphlets to new problems that require largescale network analysis. To address these problems, we propose a fast, efficient, and parallel algorithm for counting graphlets of size k = \{3, 4\}-nodes that take only a fraction of the time to compute when compared with the current methods used. The proposed graphlet counting algorithms leverages a number of proven combinatorial arguments for different graphlets. For each edge, we count a few graphlets, and with these counts along with the combinatorial arguments, we obtain the exact counts of others in constant time. On a large collection of 300+ networks from a variety of domains, our graphlet counting strategies are on average 460x faster than current methods. This brings new opportunities to investigate the use of graphlets on much larger networks and newer applications as we show in the experiments. To the best of our knowledge, this paper provides the largest graphlet computations to date as well as the largest systematic investigation on over 300+ networks from a variety of domains.},
+  isbn = {978-1-4673-9504-5},
+  langid = {english}
+}
+
+@article{barratArchitectureComplexWeighted2004,
+  title = {The Architecture of Complex Weighted Networks},
+  author = {Barrat, A. and Barthelemy, M. and {Pastor-Satorras}, R. and Vespignani, A.},
+  year = {2004},
+  journal = {Proceedings of the National Academy of Sciences},
+  volume = {101},
+  number = {11},
+  pages = {3747--3752},
+  issn = {0027-8424, 1091-6490},
+  doi = {10.1073/pnas.0400087101},
+  langid = {english}
+}
+
+@article{jiaMeasuringQuadrangleFormation2020,
+  title = {Measuring {{Quadrangle Formation}} in {{Complex Networks}}},
+  author = {Jia, Mingshan and Gabrys, Bogdan and Musial, Katarzyna},
+  year = {2020},
+  journal = {arXiv:2011.10763 [cs]},
+  eprint = {2011.10763},
+  eprinttype = {arxiv},
+  primaryclass = {cs},
+  abstract = {The classic clustering coefficient and the lately proposed closure coefficient quantify the formation of triangles from two different perspectives, with the focal node at the centre or at the end in an open triad respectively. As many networks are naturally rich in triangles, they become standard metrics to describe and analyse networks. However, the advantages of applying them can be limited in networks, where there are relatively few triangles but which are rich in quadrangles, such as the protein-protein interaction networks, the neural networks and the food webs. This yields for other approaches that would leverage quadrangles in our journey to better understand local structures and their meaning in different types of networks. Here we propose two quadrangle coefficients, i.e., the i-quad coefficient and the o-quad coefficient, to quantify quadrangle formation in networks, and we further extend them to weighted networks. Through experiments on 16 networks from six different domains, we first reveal the density distribution of the two quadrangle coefficients, and then analyse their correlations with node degree. Finally, we demonstrate that at network-level, adding the average i-quad coefficient and the average o-quad coefficient leads to significant improvement in network classification, while at node-level, the i-quad and o-quad coefficients are useful features to improve link prediction.},
+  archiveprefix = {arXiv},
+  langid = {english},
+  keywords = {Computer Science - Social and Information Networks}
+}
+
+@article{vallaranoFastScalableLikelihood2021,
+  title = {Fast and Scalable Likelihood Maximization for {{Exponential Random Graph Models}} with Local Constraints},
+  author = {Vallarano, Nicol{\`o} and Bruno, Matteo and Marchese, Emiliano and Trapani, Giuseppe and Saracco, Fabio and Cimini, Giulio and Zanon, Mario and Squartini, Tiziano},
+  year = {2021},
+  journal = {Scientific Reports},
+  volume = {11},
+  number = {1},
+  pages = {15227},
+  issn = {2045-2322},
+  doi = {10.1038/s41598-021-93830-4},
+  abstract = {Abstract                            Exponential Random Graph Models (ERGMs) have gained increasing popularity over the years. Rooted into statistical physics, the ERGMs framework has been successfully employed for reconstructing networks, detecting statistically significant patterns in graphs, counting networked configurations with given properties. From a technical point of view, the ERGMs workflow is defined by two subsequent optimization steps: the first one concerns the maximization of Shannon entropy and leads to identify the functional form of the ensemble probability distribution that is maximally non-committal with respect to the missing information; the second one concerns the maximization of the likelihood function induced by this probability distribution and leads to its numerical determination. This second step translates into the resolution of a system of               O               (               N               ) non-linear, coupled equations (with               N               being the total number of nodes of the network under analysis), a problem that is affected by three main issues, i.e.               accuracy               ,               speed               and               scalability               . The present paper aims at addressing these problems by comparing the performance of three algorithms (i.e. Newton's method, a quasi-Newton method and a recently-proposed fixed-point recipe) in solving several ERGMs, defined by binary and weighted constraints in both a directed and an undirected fashion. While Newton's method performs best for relatively little networks, the fixed-point recipe is to be preferred when large configurations are considered, as it ensures convergence to the solution within seconds for networks with hundreds of thousands of nodes (e.g. the Internet, Bitcoin). We attach to the paper a Python code implementing the three aforementioned algorithms on all the ERGMs considered in the present work.},
+  langid = {english}
+}
+
+@article{wattsCollectiveDynamicsSmallworld1998,
+  title = {Collective Dynamics of `Small-World' Networks},
+  author = {Watts, D. J. and Strogatz, S. H.},
+  year = {1998},
+  journal = {Nature},
+  volume = {393},
+  number = {6684},
+  pages = {440},
+  doi = {10.1038/30918},
+  langid = {english}
+}
+
+@inproceedings{yinLocalClosureCoefficient2019,
+  title = {The {{Local Closure Coefficient}}: {{A New Perspective On Network Clustering}}},
+  shorttitle = {The {{Local Closure Coefficient}}},
+  booktitle = {Proceedings of the {{Twelfth ACM International Conference}} on {{Web Search}} and {{Data Mining}}},
+  author = {Yin, Hao and Benson, Austin R. and Leskovec, Jure},
+  year = {2019},
+  pages = {303--311},
+  publisher = {{ACM}},
+  address = {{Melbourne VIC Australia}},
+  doi = {10.1145/3289600.3290991},
+  abstract = {The phenomenon of edge clustering in real-world networks is a fundamental property underlying many ideas and techniques in network science. Clustering is typically quantified by the clustering coefficient, which measures the fraction of pairs of neighbors of a given center node that are connected. However, many common explanations of edge clustering attribute the triadic closure to a ``head'' node instead of the center node of a length-2 path\textemdash for example, ``a friend of my friend is also my friend.'' While such explanations are common in network analysis, there is no measurement for edge clustering that can be attributed to the head node.},
+  isbn = {978-1-4503-5940-5},
+  langid = {english}
+}
+
+
