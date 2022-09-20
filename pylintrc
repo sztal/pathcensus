@@ -60,12 +60,7 @@ confidence=
 # --enable=similarities". If you want to run only the classes checker, but have
 # no Warning level messages displayed, use "--disable=all --enable=classes
 # --disable=W".
-disable=E201,
-        E202,
-        E226,
-        E302,
-        E731,
-        C0111,
+disable=C0111,
         C0326,
         R0201,
         R0901,
@@ -79,15 +74,10 @@ disable=E201,
         unpacking-in-except,
         old-raise-syntax,
         backtick,
-        long-suffix,
-        old-ne-operator,
-        old-octal-literal,
         import-star-module-level,
-        non-ascii-bytes-literal,
         raw-checker-failed,
         bad-inline-option,
         locally-disabled,
-        locally-enabled,
         file-ignored,
         suppressed-message,
         useless-suppression,
@@ -132,7 +122,6 @@ disable=E201,
         range-builtin-not-iterating,
         filter-builtin-not-iterating,
         using-cmp-argument,
-        eq-without-hash,
         div-method,
         idiv-method,
         rdiv-method,
@@ -284,8 +273,8 @@ max-module-lines=1000
 # separator` is used to allow tabulation in dicts, etc.: {1  : 1,\n222: 2}.
 # `trailing-comma` allows a space between comma and closing bracket: (a, ).
 # `empty-line` allows space-only lines.
-no-space-check=trailing-comma,
-               dict-separator
+# no-space-check=trailing-comma,
+#                dict-separator
 
 # Allow the body of a class to be on the same line as the declaration if body
 # contains single statement.
@@ -448,7 +437,7 @@ generated-members=
 
 # Tells whether missing members accessed in mixin class should be ignored. A
 # mixin class is detected if its name ends with "mixin" (case insensitive).
-ignore-mixin-members=yes
+# ignore-mixin-members=yes
 
 # Tells whether to warn about missing members when the owner of the attribute
 # is inferred to be None.

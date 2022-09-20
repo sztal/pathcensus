@@ -29,6 +29,14 @@ automatically to sparse matrices. Conversion methods for `networkx`_,
 `igraph`_ and `graph-tool`_ are registered automatically
 provided the packages are installed.
 
+.. note::
+
+    ``pathcensus`` is compatible only with Python versions supported
+    by `numba`_. In practice it means that it is compatible with all
+    versions (starting from 3.8) except for the latest one, which usually
+    starts to be supported by `numba`_ with some (often significant)
+    delay.
+
 For the sake of convenience ``pathcensus`` provides also implementations
 of most appropriate null models for statistical calibration of structural
 coefficients which are simple wrappers around the excellent `NEMtropy`_

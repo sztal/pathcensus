@@ -56,6 +56,11 @@ coverage.xml
 .pytest_cache/
 .benchmarks
 
+# Codecov
+*.gcno
+*.gcda
+*.gcov
+
 # Translations
 *.mo
 *.pot

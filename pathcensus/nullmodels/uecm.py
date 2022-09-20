@@ -46,12 +46,10 @@ Examples
     >>> # from the observed sequence
     >>> (np.abs(uecm.ES - uecm.S) <= 1e-6).all()
     True
-    >>> # Set seed of null model sampler and sample one instance
-    >>> from pathcensus.utils import set_seed
-    >>> set_seed(44)
-    >>> uecm.sample_one()
+    >>> # Sample a single instance
+    >>> uecm.sample_one()    # doctest: +ELLIPSIS
     <20x20 sparse matrix of type '<class 'numpy.int64'>'
-    	with 68 stored elements in Compressed Sparse Row format>
+    	with ... stored elements in Compressed Sparse Row format>
     >>> # Sample multiple instances (generator)
     >>> for instance in uecm.sample(10): pass
 """

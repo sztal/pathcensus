@@ -44,6 +44,9 @@ test:
 test-all:
 	tox
 
+test-all-p:
+	tox -p auto
+
 cov-run:
 	coverage run --source pathcensus setup.py test
 
@@ -53,6 +56,9 @@ cov-report:
 	xdg-open htmlcov/index.html || open htmlcov/index.html
 
 coverage: cov-run cov-report
+
+codecov-xml:
+	pytest --cov=./pathcensus --cov-report=xml
 
 docs:
 	rm -f docs/pathcensus.rst

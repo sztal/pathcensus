@@ -22,3 +22,7 @@ doctest_optionflags = [ "NORMALIZE_WHITESPACE" ]
 python_files = [ "test_*.py" ]
 python_classes = [ "Test*" ]
 python_functions = [ "test_*" ]
+
+# Coverage configuration
+[tool.coverage]
+run.omit = ["*/core/*.py"]

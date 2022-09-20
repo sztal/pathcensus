@@ -76,7 +76,6 @@ from typing import Any, Optional, Mapping
 from typing import Sequence, Tuple, Dict, Callable, Literal, Union
 from dataclasses import dataclass
 import numpy as np
-import numba
 import pandas as pd
 from statsmodels.stats.multitest import fdrcorrection_twostage
 from tqdm.auto import tqdm

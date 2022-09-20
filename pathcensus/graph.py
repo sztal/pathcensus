@@ -17,6 +17,13 @@ Graph classes defined by :py:mod:`networkx`, :py:mod:`igraph`
 and :py:mod:`graph_tool` are registered automatically provided
 the packages are installed.
 
+.. note::
+
+    ``pathcensus`` uses the ``A_{ij} = 1`` convention to indicate
+    that a node `i` sends a tie to a node `j`. Functions converting
+    graph-like objects to arrays / sparse matrices need to be aware
+    of that.
+
 Below is an example in which a custom conversion from a list of list
 format is registered. Arguably, the below implementation is naive and
 handles the conversion by simply converting to a :py:mod:`numpy` array,
@@ -137,7 +144,7 @@ try:
     import networkx as nx     # tyoe: ignore
     def _adj_nx(graph: nx.Graph, **kwds: Any) -> spmatrix:
         """Adjacency matrix from :py:class:`networkx.Graph` object."""
-        adj = nx.convert_matrix.to_scipy_sparse_matrix(graph, **kwds)
+        adj = nx.convert_matrix.to_scipy_sparse_array(graph, **kwds)
         return adjacency(adj)
     # Register as GraphABC subclass
     GraphABC.register_type(nx.Graph, _adj_nx)
