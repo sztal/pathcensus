@@ -1,10 +1,71 @@
 [build-system]
 requires = [
-    "setuptools>=52.0",
+    "setuptools>=61.0",
     "wheel>=0.37"
 ]
 build-backend = "setuptools.build_meta"
 
+[project]
+name = "pathcensus"
+requires-python = ">=3.8"
+version = "0.1"
+authors = [{ name = "Szymon Talaga", email = "stalaga@protonmail.com" }]
+description = """\
+    Structural similarity and complementarity coefficients \
+    for undirected networks based on efficient counting
+    of 2- and 3-paths and 3- and 4-cycles\
+    """
+readme = "README.rst"
+license = { file = "LICENSE" }
+keywords = [
+    "networks", "graphs", "undirected", "weighted",
+    "bipartite", "network science", "network geometry",
+    "triples", "quadruples", "triangles", "quadrangles",
+    "path census", "motifs", "relational principles", "homophily",
+    "similarity", "complementarity", "structural equivalence",
+    "random geometric graph", "latent space model",
+    "exponential random graph", "ergm"
+]
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "Natural Language :: English",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent"
+]
+dependencies = [
+    "numpy>=1.20",
+    "numba>=0.50",
+    "scipy>=1.7",
+    "pandas>=1.3",
+    "statsmodels>=0.12",
+    "NEMtropy>=2.0",
+    "tqdm>=4.62"
+]
+
+[project.optional-dependencies]
+test = [
+    "ipython>=7.26",
+    "pylint>=2.9",
+    "pytest>=6.2",
+    "pytest-runner>=5.3",
+    "pytest-pylint>=0.18",
+    "pytest-cov>=3.0.0",
+    "python-igraph>=0.9",
+    "networkx>=2.6"
+]
+docs = [
+    "Sphinx>=4.3",
+    "sphinx-rtd-theme>=1.0",
+    "sphinxcontrib-bibtex>=2.4"
+]
+
+[project.urls]
+documentation = "https://pathcensus.readthedocs.io/en/latest/"
+repository = "https://github.com/sztal/pathcensus"
+changelog = "https://github.com/sztal/pathcensus/blob/master/HISTORY.rst"
+
+[tool.setuptools]
+package-dir = { pathcensus = "pathcensus" }
 
 # PyTest configuration
 [tool.pytest.ini_options]
@@ -22,3 +83,7 @@ doctest_optionflags = [ "NORMALIZE_WHITESPACE" ]
 python_files = [ "test_*.py" ]
 python_classes = [ "Test*" ]
 python_functions = [ "test_*" ]
+
+# Coverage configuration
+[tool.coverage]
+run.omit = ["*/core/*.py"]

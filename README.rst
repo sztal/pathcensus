@@ -2,11 +2,11 @@
 ``pathcensus`` package
 =============================
 
-.. image:: https://badge.fury.io/py/pathcensus.png
-    :target: http://badge.fury.io/py/pathcensus
+.. image:: https://github.com/sztal/pathcensus/actions/workflows/tests.yml/badge.svg
+ :target: https://github.com/sztal/pathcensus
 
-.. image:: https://travis-ci.org/sztal/pathcensus.png?branch=master
-    :target: https://travis-ci.org/sztal/pathcensus
+.. image:: https://codecov.io/gh/sztal/pathcensus/branch/master/graph/badge.svg?token=HP4hLAnagg
+ :target: https://codecov.io/gh/sztal/pathcensus
 
 
 Welcome to the documentation of ``pathcensus`` package.
@@ -37,7 +37,23 @@ automatically to sparse matrices. Conversion methods for `networkx`_,
 `igraph`_ and `graph-tool`_ are registered automatically
 provided the packages are installed.
 
-For the sake of convenience ``pathcensus`` provides also implementations
+**NOTE**
+
+    ``pathcensus`` uses the ``A_{ij} = 1`` convention to indicate
+    that a node `i` sends a tie to a node `j`. Functions converting
+    graph-like objects to arrays / sparse matrices need to be aware
+    of that.
+
+**NOTE**
+
+    ``pathcensus`` is compatible only with Python versions supported
+    by `numba`_. In practice it means that it is compatible with all
+    versions (starting from 3.8) except for the latest one, which usually
+    starts to be supported by `numba`_ with some (often significant)
+    delay.
+
+
+For the sake of convenience ``pathcensus`` also provides implementations
 of most appropriate null models for statistical calibration of structural
 coefficients which are simple wrappers around the excellent `NEMtropy`_
 package. It also defines the ``pathcensus.inference`` submodule with
@@ -46,15 +62,15 @@ sampling from null models.
 
 See ``examples`` subfolder and the main documentation for more details.
 
-At the command line via pip
+At the command line via pip:
 
 .. code-block::
 
-    # Not yet on PyPI
+    # Install from PyPI
     pip install pathcensus
 
-The current (unstable) development version can be installed
-directly from the `github repo`_
+The current development version (not guaranteed to be stable)
+can be installed directly from the `github repo`_
 
 .. code-block::
 
@@ -68,8 +84,8 @@ You find the package useful? Please cite our work properly.
 
 **Main theory paper**
 
-    Talaga, S., & Nowak, A. (2022). Structural complementarity and similarity:
-    linking relational principles to network structure. arXiv preprint arXiv:2201.03664.
+    Talaga, S., & Nowak, A. (2022). Structural measures of similarity and complementarity
+    in complex networks. *Scientific Reports*, (in press).
 
 
 Usage
@@ -84,7 +100,7 @@ Usage
 
 We will use `igraph`_ to generate graphs used in examples. However, even though
 it is automatically integrated with ``pathcensus``, `igraph`_ is not
-a dependency.
+a dependency and needs to be installed separately.
 
 .. code-block:: python
 
@@ -228,6 +244,11 @@ by using ``parallel=True``.
     time ``parallel=True`` is used there will be a significant extra
     overhead.
 
+**NOTE**
+
+    The ``parallel=True`` argument may not work and lead to segmentation
+    faults on some MacOS machines.
+
 .. code-block:: python
 
     # By default all available threads are used
@@ -261,7 +282,7 @@ from the `github repo`_.
 
 It is recommended to work within an isolated virtual environment.
 This can be done easily for instance using `conda`_.
-Remember about using a proper Python version (e.g. 3.8 or 3.9).
+Remember about using a proper Python version (i.e. 3.8+).
 
 .. code-block::
 

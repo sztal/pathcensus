@@ -36,12 +36,10 @@ Examples
     >>> # from the observed sequence
     >>> (np.abs(ubcm.ED - ubcm.D) <= 1e-6).all()
     True
-    >>> # Set seed of null model sampler and sample ensemble instance
-    >>> from pathcensus.utils import set_seed
-    >>> set_seed(17)
-    >>> ubcm.sample_one()
+    >>> # Sample a single ensemble instance
+    >>> ubcm.sample_one()    # doctest: +ELLIPSIS
     <20x20 sparse matrix of type '<class 'numpy.uint8'>'
-    	with 84 stored elements in Compressed Sparse Row format>
+    	with ... stored elements in Compressed Sparse Row format>
     >>> # Sample multiple instances (generator)
     >>> for instance in ubcm.sample(10): pass
 """

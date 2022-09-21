@@ -424,6 +424,11 @@ class PathCensus:
             Passed to :py:func:`pathcensus.core.parallel.count_paths_parallel`
             when ``parallel=True``.
 
+        Notes
+        -----
+        The ``parallel=True`` argument may not work and lead to segmentation
+        faults on some MacOS machines.
+
         Returns
         -------
         n_nodes

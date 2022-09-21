@@ -3,7 +3,7 @@ How to cite?
 
 You find the package useful? Please cite our work properly.
 
-`Main theory paper <https://arxiv.org/abs/2201.03664>`_
+**Main theory paper**
 
-    Talaga, S., & Nowak, A. (2022). Structural complementarity and similarity:
-    linking relational principles to network structure. arXiv preprint arXiv:2201.03664.
+    Talaga, S., & Nowak, A. (2022). Structural measures of similarity and complementarity
+    in complex networks. *Scientific Reports*, (in press).

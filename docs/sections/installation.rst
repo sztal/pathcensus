@@ -8,8 +8,8 @@ At the command line via pip
 
     pip install pathcensus
 
-The current (unstable) development version can be installed
-directly from the `github repo`_
+The current development version (not guaranteed to be stable)
+can be installed directly from the `github repo`_
 
 .. code-block::
 
@@ -28,7 +28,7 @@ from the `github repo`_.
 
 It is recommended to work within an isolated virtual environment.
 This can be done easily for instance using `conda`_.
-Remember about using a proper Python version (e.g. 3.8 or 3.9).
+Remember about using a proper Python version (i.e. 3.8+).
 
 .. code-block::
 
