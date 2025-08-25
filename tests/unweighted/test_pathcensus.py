@@ -71,7 +71,7 @@ class TestPathCounting:
             of paths and cycles.
             """
             E, G = paths_edges_global
-            m0 = G[path].iloc[0]
+            m0 = G[path]
             m1 = E[path].sum()
 
             arules = PathDefinitionsUnweighted().aggregation.get("global", {})

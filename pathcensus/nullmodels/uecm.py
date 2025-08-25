@@ -48,8 +48,8 @@ Examples
     True
     >>> # Sample a single instance
     >>> uecm.sample_one()    # doctest: +ELLIPSIS
-    <20x20 sparse matrix of type '<class 'numpy.int64'>'
-    	with ... stored elements in Compressed Sparse Row format>
+    <...
+    	with ... stored elements ...>
     >>> # Sample multiple instances (generator)
     >>> for instance in uecm.sample(10): pass
 """

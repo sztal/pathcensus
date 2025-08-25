@@ -46,8 +46,13 @@ the main logic of registering custom graph-like classes.
     >>> # Calculate path census
     >>> paths = PathCensus(A)
     >>> paths.census("global")
-       t  tw  th  q0  qw  qh
-    0  1   3   3   0   0   0
+    t     1
+    tw    3
+    th    3
+    q0    0
+    qw    0
+    qh    0
+    dtype: uint64
 """
 from abc import ABC
 from typing import Callable, Any
@@ -138,6 +143,23 @@ def _adj_spmat(graph: spmatrix) -> spmatrix:
 
 GraphABC.register_type(spmatrix, _adj_spmat)
 
+# Register sparse arrays as graph-like class ----------------------------------
+
+try:
+    from scipy.sparse import sparray
+    def _adj_sparray(graph: sparray) -> spmatrix:
+        """Adjacency matrix from sparse array.
+
+        It just converts it to CSR format and ensures that no zeros
+        are represented explicitly.
+        """
+        graph = graph.tocsr()
+        graph.eliminate_zeros()
+        return graph
+
+    GraphABC.register_type(sparray, _adj_sparray)
+except ImportError:
+    pass
 
 # Register networkx networks as graph-like class ------------------------------
 try:

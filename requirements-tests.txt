@@ -6,3 +6,4 @@ pytest-pylint>=0.18
 pytest-cov>=3.0.0
 python-igraph>=0.9
 networkx>=2.6
+tox>=4.28.4

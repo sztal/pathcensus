@@ -45,7 +45,7 @@ class TestTheory:
         minimum and maximum edge similarity.
         """
         _, P = random_graph_connected
-        gdf = P.similarity("edges").groupby(level="i").agg([min, max])
+        gdf = P.similarity("edges").groupby(level="i").agg(["min", "max"])
         s_node = P.similarity("nodes", undefined="undefined")
         s_emin = gdf["min"]
         s_emax = gdf["max"]
@@ -69,7 +69,7 @@ class TestTheory:
         minimum and maximum edge complementarity.
         """
         _, P = random_graph_connected
-        gdf = P.complementarity("edges").groupby(level="i").agg([min, max])
+        gdf = P.complementarity("edges").groupby(level="i").agg(["min", "max"])
         c_node = P.complementarity("nodes", undefined="zero")
         c_emin = gdf["min"]
         c_emax = gdf["max"]

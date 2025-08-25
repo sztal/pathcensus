@@ -87,7 +87,7 @@ class TestPathCounting:
             of paths and cycles.
             """
             E, G = paths_edges_global
-            m0 = G[path].iloc[0]
+            m0 = G[path]
             m1 = E[path].sum()
 
             arules = PathDefinitionsWeighted().aggregation.get("global", {})
@@ -158,17 +158,17 @@ class TestPathCounting:
         are consistent with the unweighted counts etc.
         """
         @staticmethod
-        def to_unweighted(df):
+        def to_unweighted(data: pd.DataFrame | pd.Series) -> pd.DataFrame | pd.Series:
             """Combine weighted counts so they have the same columns
             as unweighted counts.
             """
-            return pd.DataFrame({
-                "t": (df["twc"] + df["thc"]) / 2,
-                "tw": df["tw"],
-                "th": df["th"],
-                "q0": (df["q0wc"] + df["q0hc"]) / 2,
-                "qw": df["qw"],
-                "qh": df["qh"]
+            return data.__class__({
+                "t": (data["twc"] + data["thc"]) / 2,
+                "tw": data["tw"],
+                "th": data["th"],
+                "q0": (data["q0wc"] + data["q0hc"]) / 2,
+                "qw": data["qw"],
+                "qh": data["qh"]
             })
 
         @pytest.mark.parametrize("mode", ["edges", "nodes", "global"])

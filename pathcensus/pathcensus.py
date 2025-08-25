@@ -483,7 +483,7 @@ class PathCensus:
                 .reindex(np.arange(self.n_nodes), copy=False) \
                 .fillna(0)
         elif mode == "global":
-            counts = counts.sum().to_frame().T
+            counts = counts.sum()
 
         return counts
 
@@ -860,7 +860,7 @@ class PathCensus:
         undefined: Literal[Meta.undef] = Meta.undef[0], # type: ignore
         census: bool = False,
         counts: Optional[pd.DataFrame] = None
-    ) -> pd.DataFrame:
+    ) -> pd.DataFrame | pd.Series:
         """Calculate similarity coefficients including clustering
         and closure coefficients when ``mode="nodes"`` or their
         node-wise averages when ``mode="global"``.
@@ -901,8 +901,11 @@ class PathCensus:
             1  1.0     1.0       1.0
             2  1.0     1.0       1.0
             >>> PathCensus(A).simcoefs("global")
-               sim_g  sim  tclust  tclosure
-            0    1.0  1.0     1.0       1.0
+            sim_g       1.0
+            sim         1.0
+            tclust      1.0
+            tclosure    1.0
+            dtype: float64
         """
         counts = counts if counts is not None else self.get_counts(mode)
         kwds = dict(undefined=undefined)
@@ -918,12 +921,14 @@ class PathCensus:
                 "tclosure": self.tclosure(counts=counts, **kwds),
             })
         else:
-            coefs = self.simcoefs(mode="nodes", **kwds).mean().to_frame().T
-            coefs.insert(0, "sim_g", self.similarity(mode, counts=counts, **kwds))
+            coefs = pd.Series({
+                "sim_g": self.similarity(mode, counts=counts, **kwds),
+                **self.simcoefs(mode="nodes", **kwds).mean()
+            })
 
         if census:
             paths = self.census(mode)
-            coefs = pd.concat([coefs, paths], axis=1)
+            coefs = pd.concat([coefs, paths], axis=mode != "global")
 
         return coefs
 
@@ -977,8 +982,11 @@ class PathCensus:
             2   1.0     1.0       1.0
             3   1.0     1.0       1.0
             >>> PathCensus(A).compcoefs("global")
-               comp_g  comp  qclust  qclosure
-            0     1.0   1.0     1.0       1.0
+            comp_g      1.0
+            comp        1.0
+            qclust      1.0
+            qclosure    1.0
+            dtype: float64
         """
         counts = counts if counts is not None else self.get_counts(mode)
         kwds = dict(undefined=undefined)
@@ -994,12 +1002,14 @@ class PathCensus:
                 "qclosure": self.qclosure(counts=counts, **kwds)
             })
         else:
-            coefs = self.compcoefs(mode="nodes", **kwds).mean().to_frame().T
-            coefs.insert(0, "comp_g", self.complementarity(mode, counts=counts, **kwds))
+            coefs = pd.Series({
+                "comp_g": self.complementarity(mode, counts=counts, **kwds),
+                **self.compcoefs(mode="nodes", **kwds).mean()
+            })
 
         if census:
             paths = self.census(mode)
-            coefs = pd.concat([coefs, paths], axis=1)
+            coefs = pd.concat([coefs, paths], axis=mode != "global")
 
         return coefs
 
@@ -1037,11 +1047,11 @@ class PathCensus:
 
         scoefs = self.simcoefs(mode, **skw)
         ccoefs = self.compcoefs(mode, **ckw)
-        coefs = pd.concat([scoefs, ccoefs], axis=1)
+        coefs = pd.concat([scoefs, ccoefs], axis=mode != "global")
 
         if census:
             paths = self.census(mode)
-            coefs = pd.concat([coefs, paths], axis=1)
+            coefs = pd.concat([coefs, paths], axis=mode != "global")
 
         return coefs
 
@@ -1211,11 +1221,17 @@ class PathCensus:
         with np.errstate(invalid="ignore"):
             out = x / y
         if undefined == "zero":
-            out[np.isnan(out) | np.isinf(out)] = 0.0
+            if np.isscalar(out):
+                if np.isnan(out) or np.isinf(out):
+                    out = 0.0
+            else:
+                out[np.isnan(out) | np.isinf(out)] = 0.0
         else:
-            out[np.isinf(out)] = np.nan
-        if out.size == 1:
-            out = out.iloc[0]
+            if np.isscalar(out):
+                if np.isinf(out):
+                    out = np.nan
+            else:
+                out[np.isinf(out)] = np.nan
         return out
 
     def _qcount(

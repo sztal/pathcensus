@@ -172,7 +172,10 @@ class Inference:
         **kwds
             Passed to graph statistics function.
         """
-        data  = self.statistics(graph, **kwds)
+        data = self.statistics(graph, **kwds)
+        if isinstance(data, pd.Series) and all(isinstance(n ,str) for n in data.index):
+            # Dirty hack to handle global coefs passed as a series
+            data = data.to_frame().T
         if _stats is None:
             _stats = self.model.extract_statistics(graph)
             # _stats = self.model.statistics

@@ -38,8 +38,8 @@ Examples
     True
     >>> # Sample a single ensemble instance
     >>> ubcm.sample_one()    # doctest: +ELLIPSIS
-    <20x20 sparse matrix of type '<class 'numpy.uint8'>'
-    	with ... stored elements in Compressed Sparse Row format>
+    <...
+    	with ... stored elements ...>
     >>> # Sample multiple instances (generator)
     >>> for instance in ubcm.sample(10): pass
 """
